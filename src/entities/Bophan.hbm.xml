@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 29, 2017 11:37:41 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Bophan" table="bophan" schema="dbo" catalog="tiendien" optimistic-lock="version">
+        <id name="mabp" type="int">
+            <column name="mabp" />
+            <generator class="identity" />
+        </id>
+        <property name="tenbp" type="string">
+            <column name="tenbp" length="200" not-null="true" />
+        </property>
+        <set name="hoadons" table="hoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mabp" not-null="true" />
+            </key>
+            <one-to-many class="entities.Hoadon" />
+        </set>
+    </class>
+</hibernate-mapping>
